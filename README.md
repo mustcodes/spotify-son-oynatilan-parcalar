@@ -13,16 +13,16 @@ Aşağıdaki düğmeye tıklayarak Spotify hesabınızı Vercel uygulamasıyla b
 İzin verildikten sonra, README'nize aşağıdaki kodu ekleyin ve `user` sorgu parametresini Spotify kullanıcı adınıza ayarlayın.
 
 ```md
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)
 ```
 
-![Spotify Son Oynatılan Parçalar](https://spotify-son-oynatilan-parcalar.vercel.app/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)
 
 ### Spotify profil bağlantısı
 Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağıdaki kodu kullanın:
 
 ```md
-[![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova)](https://open.spotify.com/user/mdusova)
+[![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)](https://open.spotify.com/user/31e4wu2ua42rf5qvqaukgjwgz7tu)
 ```
 
 [![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)](https://open.spotify.com/user/31e4wu2ua42rf5qvqaukgjwgz7tu)
@@ -36,7 +36,7 @@ Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağ
 
 Örnek:
 ```md
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&count=1)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&count=1)
 ```
 
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&count=1)
@@ -50,7 +50,7 @@ Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağ
 
 Örnek:
 ```md
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&width=600)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&width=600)
 ```
 
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&width=600)
@@ -62,7 +62,7 @@ Son oynatılan parçalar listesinde yalnızca tekil parçaları göstermek için
 
 Örnek:
 ```md
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&unique=true)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&unique=true)
 ```
 
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&unique=true)
