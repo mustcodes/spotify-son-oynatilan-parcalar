@@ -1,8 +1,8 @@
 # Spotify Son Oynatılanlar ReadME
-GitHub profilinizdeki README'de son oynatılan Spotify parçalarınızı görüntüleyin. [Vercel](https://vercel.com) tarafından hostlanmıştır.
+GitHub profilinizdeki README'de son oynatılan Spotify parçalarınızı görüntüleyin. [Vercel](https://vercel.com) tarafından desteklenmektedir.
 
 ## Başlangıç
-Aşağıdaki düğmeye tıklayarak Spotify hesabınızı Vercel uygulamasıyla bağlayın. Bu, son oynatılan parçalarınızı erişmek için gereklidir.
+Aşağıdaki düğmeye tıklayarak Spotify hesabınızı bağlayın. Bu, son oynatılan parçalarınıza erişmek için gereklidir.
 
 > Uygulamayı yetkilendirerek, Spotify kullanıcı adınız, erişim belirteci ve yenileme belirtecinizin güvenli bir Firebase veritabanında saklanmasına izin veriyorsunuz. Bu, yalnızca bir kez yetkilendirme yapmanız ve uygulamanın otomatik olarak yenileme belirteçlerini yenilemesini sağlar.
 >
