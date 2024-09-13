@@ -16,7 +16,7 @@ Aşağıdaki düğmeye tıklayarak Spotify hesabınızı Vercel uygulamasıyla b
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova)
 ```
 
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)
+![Spotify Son Oynatılan Parçalar](https://spotify-son-oynatilan-parcalar.vercel.app/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)
 
 ### Spotify profil bağlantısı
 Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağıdaki kodu kullanın:
