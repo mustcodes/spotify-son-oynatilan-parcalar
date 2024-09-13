@@ -39,7 +39,7 @@ Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağ
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&count=1)
 ```
 
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&count=1)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&count=3)
 
 ### Özel kart genişliği
 Özel bir kart genişliği ayarlamak için width sorgu parametresini geçirin ve istenilen genişliği px olarak ayarlayın.
