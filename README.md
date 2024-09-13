@@ -82,7 +82,7 @@ Kendi uygulamanızı oluşturmak için yukarıdaki bağlantıyı kullanın. Sonr
 | `FIREBASE_PRIVATE_KEY_B64` | Firebase özel anahtarının base64 kodlu dizesi |
 | `FIREBASE_CLIENT_EMAIL` | Firebase istemci e-postası |
 | `FIREBASE_DATABASE_URL` | Firebase veritabanı URL'si |
-| `WARMUP_KEY` | 	Firebase veritabanı ısınma anahtarı (daha fazla bilgi için [Sıkça Sorulan Sorular](#sikca-sorulan-sorular) bölümüne bakın)
+| `WARMUP_KEY` | 	Firebase veritabanı ısınma anahtarı (daha fazla bilgi için [Sıkça Sorulan Sorular](#sıkça-sorulan-sorular) bölümüne bakın)
 
 Son olarak, `utils/Constants.ts` dosyasını düzenleyin ve `ClientId`, `BaseUrl`, `RedirectUri` değerlerini ayarlayın.
 
