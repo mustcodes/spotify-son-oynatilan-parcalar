@@ -16,6 +16,7 @@ export default function Timestamp(props: Props): JSX.Element {
     const timestampText =
         DateTime.fromISO(isoDate, {
             zone: 'utc',
+            locale: 'tr',
         }).toRelative({
             style: 'short',
         }) ?? '';
