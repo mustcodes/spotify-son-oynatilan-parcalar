@@ -16,7 +16,7 @@ Aşağıdaki düğmeye tıklayarak Spotify hesabınızı Vercel uygulamasıyla b
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova)
 ```
 
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)
 
 ### Spotify profil bağlantısı
 Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağıdaki kodu kullanın:
@@ -25,7 +25,7 @@ Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağ
 [![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova)](https://open.spotify.com/user/mdusova)
 ```
 
-[![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova)](https://open.spotify.com/user/mdusova)
+[![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu)](https://open.spotify.com/user/31e4wu2ua42rf5qvqaukgjwgz7tu)
 
 ### Özel parça sayısı
 Özel bir parça sayısı göstermek için count sorgu parametresini geçirin ve gösterilecek parça sayısını ayarlayın.
@@ -39,7 +39,7 @@ Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağ
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&count=1)
 ```
 
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&count=1)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&count=1)
 
 ### Özel kart genişliği
 Özel bir kart genişliği ayarlamak için width sorgu parametresini geçirin ve istenilen genişliği px olarak ayarlayın.
@@ -53,7 +53,7 @@ Widget'ı Spotify profilinize (veya herhangi bir websiteye) eklemek için aşağ
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&width=600)
 ```
 
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&width=600)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&width=600)
 
 ### Tekil parçalar
 Son oynatılan parçalar listesinde yalnızca tekil parçaları göstermek için unique sorgu parametresini geçirin ve `true`, `1`, `on` veya `yes` olarak ayarlayın.
@@ -65,7 +65,7 @@ Son oynatılan parçalar listesinde yalnızca tekil parçaları göstermek için
 ![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&unique=true)
 ```
 
-![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=mdusova&unique=true)
+![Spotify Son Oynatılan Parçalar](https://spotify.mdusova.com/api?user=31e4wu2ua42rf5qvqaukgjwgz7tu&unique=true)
 
 ## Kendi uygulamanı Vercel üzerinden oluştur
 [![Vercel Üzerinden Oluştur](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fmustcodes%2Fspotify-son-oynatilan-parcalar&env=NEXT_PUBLIC_CLIENT_ID,NEXT_PUBLIC_BASE_URL,NEXT_PUBLIC_REDIRECT_URI,CLIENT_SECRET,FIREBASE_PROJECT_ID,FIREBASE_PRIVATE_KEY_B64,FIREBASE_CLIENT_EMAIL)
