@@ -1,4 +1,4 @@
-import { Input, Space, Typography, Tabs, Switch } from 'antd';
+import { Input, Space, Typography, Tabs, Switch, Slider } from 'antd';
 import React, { useState, useEffect } from 'react';
 import * as Constants from '../utils/Constants';
 
@@ -26,11 +26,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const customWidth = `![Alt text](${svgSrc}&width=${width})`;
     const uniqueTracks = `![Alt text](${svgSrc}&unique=${unique ? 'true' : 'false'})`;
 
-    // useEffect ile ayarların anında güncellenmesini sağlıyoruz
-    useEffect(() => {
-        // Bu useEffect ile `count`, `width` ve `unique` değişiklikleri işlenir
-    }, [count, width, unique]);
-
     return (
         <Tabs defaultActiveKey="1">
             <TabPane tab="Markdown" key="1">
@@ -50,34 +45,27 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             <TabPane tab="Ayarlar" key="2">
                 <Space direction="vertical" size="small">
                     <Title level={5}>Ayarlar</Title>
-                    <Text>
-                        Özel sayı için (
-                        <b>
-                            {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
-                        </b>
-                        ):
-                    </Text>
-                    <Input
-                        type="number"
+                    
+                    <Text>Özel sayı:</Text>
+                    <Slider
                         min={Constants.minCount}
                         max={Constants.maxCount}
+                        step={1}
                         value={count}
-                        onChange={(e) => setCount(Number(e.target.value))}
+                        onChange={(value) => setCount(value as number)}
+                        tooltip={{ formatter: (value) => `Sayı: ${value}` }}
                     />
-                    <Text>
-                        Özel genişlik için (
-                        <b>
-                            {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
-                        </b>
-                        ):
-                    </Text>
-                    <Input
-                        type="number"
+                    
+                    <Text>Özel genişlik:</Text>
+                    <Slider
                         min={Constants.minWidth}
                         max={Constants.maxWidth}
+                        step={10}
                         value={width}
-                        onChange={(e) => setWidth(Number(e.target.value))}
+                        onChange={(value) => setWidth(value as number)}
+                        tooltip={{ formatter: (value) => `Genişlik: ${value}px` }}
                     />
+                    
                     <Text>Benzersiz parçalar için:</Text>
                     <Switch
                         checked={unique}
