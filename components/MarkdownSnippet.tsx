@@ -55,35 +55,38 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             </Row>
             <style jsx>{`
                 .svg-container {
-                    width: 100%; /* Full width of the parent container */
-                    max-width: 100%; /* Prevent the SVG from exceeding the container width */
-                    height: auto; /* Maintain aspect ratio */
                     display: flex;
-                    justify-content: center; /* Center horizontally */
-                    align-items: center; /* Center vertically */
-                    overflow: hidden; /* Hide any overflow */
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    width: 100%;
+                    max-width: 100%;
+                    height: auto;
                 }
 
                 .svg-preview {
-                    width: 100%; /* Make SVG take the full width of its container */
-                    height: auto; /* Maintain aspect ratio */
+                    width: auto; /* Keep SVG width based on its content on large screens */
+                    height: auto; /* Maintain aspect ratio on large screens */
+                    max-width: 100%; /* Ensure it doesn't exceed container width */
                 }
 
                 .markdown {
                     font-family: monospace;
                     margin-bottom: 8px !important;
-                    width: 100%; /* Ensure the textarea takes full width of the container */
+                    width: 100%;
                 }
 
+                /* Media queries for responsiveness on small screens */
                 @media (max-width: 768px) {
-                    .markdown {
-                        font-size: 14px; /* Adjust font size for smaller screens */
+                    .svg-preview {
+                        width: 100%; /* Scale SVG to fit container width on smaller screens */
+                        height: auto; /* Maintain aspect ratio */
                     }
                 }
 
                 @media (max-width: 576px) {
                     .markdown {
-                        font-size: 12px; /* Further adjust font size for very small screens */
+                        font-size: 14px; /* Adjust font size for smaller screens */
                     }
                 }
             `}</style>
