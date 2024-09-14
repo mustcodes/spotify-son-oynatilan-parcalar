@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import MarkdownSnippet from '../components/MarkdownSnippet';
 import SpotifyAuthButton from '../components/SpotifyAuthButton';
 import { ClientId, RedirectUri } from '../utils/Constants';
-import '../styles/styles.css'; // Stil dosyanızı import edin
 
 const { Text, Title } = Typography;
 
