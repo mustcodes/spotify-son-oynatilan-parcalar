@@ -1,6 +1,7 @@
 import { Input, Space, Typography } from 'antd';
 import React from 'react';
 import * as Constants from '../utils/Constants';
+import '../styles/styles.css'; // Stil dosyanızı import edin
 
 const { Text, Title } = Typography;
 const { TextArea } = Input;
@@ -17,14 +18,6 @@ const markdownStyle: React.CSSProperties = {
 const vertSpaceStyle: React.CSSProperties = {
     marginTop: '10px',
     marginBottom: '10px',
-};
-
-const responsiveStyles: React.CSSProperties = {
-    '@media (max-width: 768px)': {
-        markdown: {
-            fontSize: '14px',
-        },
-    },
 };
 
 interface Props {
