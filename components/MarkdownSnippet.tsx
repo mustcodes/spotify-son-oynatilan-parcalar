@@ -1,4 +1,4 @@
-import { Input, Space, Typography, Divider, Slider, Form, Radio } from 'antd';
+import { Input, Space, Typography, Divider, Slider, Form, Radio, Switch } from 'antd';
 import React, { useState } from 'react';
 import * as Constants from '../utils/Constants';
 
@@ -14,6 +14,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const [width, setWidth] = useState<number>(400); // Varsayılan genişlik
     const [count, setCount] = useState<number>(5); // Varsayılan özel sayı
     const [unique, setUnique] = useState<string>('false'); // Varsayılan benzersiz parça
+    const [showHtml, setShowHtml] = useState<boolean>(false); // HTML veya Markdown gösterimi
 
     if (!username) {
         return null;
@@ -50,10 +51,32 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             </Title>
             <Divider />
 
+            <div className="switch-container">
+                <Text>Markdown</Text>
+                <Switch checked={!showHtml} onChange={() => setShowHtml(false)} />
+                <Text>HTML</Text>
+                <Switch checked={showHtml} onChange={() => setShowHtml(true)} />
+            </div>
+
             <div className="section">
                 <Title level={5}>Markdown kod parçacığı:</Title>
-                <TextArea className="markdown" autoSize readOnly value={markdownCode} />
-                <TextArea className="html-code" autoSize readOnly value={htmlCode} />
+                {showHtml ? null : (
+                    <>
+                        <TextArea className="markdown" autoSize readOnly value={markdownCode} />
+                        <TextArea className="markdown" autoSize readOnly value={customMarkdownCode} />
+                        <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
+                        <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
+                        <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
+                    </>
+                )}
+                {showHtml ? (
+                    <>
+                        <TextArea className="html-code" autoSize readOnly value={htmlCode} />
+                        <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&count=${count}" alt="Preview" />`} />
+                        <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&width=${width}" alt="Preview" />`} />
+                        <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />`} />
+                    </>
+                ) : null}
             </div>
 
             <div className="section">
@@ -74,8 +97,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         tooltipPlacement="top"
                         style={{ marginBottom: 20 }}
                     />
-                    <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
-                    <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&count=${count}" alt="Preview" />`} />
                 </Form.Item>
             </div>
 
@@ -97,8 +118,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         tooltipPlacement="top"
                         style={{ marginBottom: 20 }}
                     />
-                    <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
-                    <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&width=${width}" alt="Preview" />`} />
                 </Form.Item>
             </div>
 
@@ -108,8 +127,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     <Radio value="true">Evet</Radio>
                     <Radio value="false">Hayır</Radio>
                 </Radio.Group>
-                <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
-                <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />`} />
             </div>
 
             <div className="image-preview">
@@ -121,23 +138,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 />
             </div>
 
-            <div className="section">
-                <Title level={5}>Markdown Kodunuz:</Title>
-                <TextArea
-                    className="markdown"
-                    autoSize
-                    readOnly
-                    value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
-                />
-                <Title level={5}>HTML Kodunuz:</Title>
-                <TextArea
-                    className="html-code"
-                    autoSize
-                    readOnly
-                    value={htmlCode}
-                />
-            </div>
-
             <style jsx>{`
                 .container {
                     max-width: 800px;
@@ -146,6 +146,16 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     background: #fff;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+                .switch-container {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                }
+
+                .switch-container .ant-switch {
+                    margin: 0 10px;
                 }
 
                 .section {
