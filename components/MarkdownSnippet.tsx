@@ -44,7 +44,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             </TabPane>
             <TabPane tab="Ayarlar" key="2">
                 <Space direction="vertical" size="small">
-                    <Title level={5>Ayarlar</Title>
+                    <Title level={5}>Ayarlar</Title>
                     <Text>
                         Özel sayı için (
                         <b>
@@ -56,7 +56,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         type="number"
                         min={Constants.minCount}
                         max={Constants.maxCount}
-                        value={count}
+                        value={count.toString()}
                         onChange={(e) => setCount(Number(e.target.value))}
                     />
                     <Text>
@@ -70,7 +70,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         type="number"
                         min={Constants.minWidth}
                         max={Constants.maxWidth}
-                        value={width}
+                        value={width.toString()}
                         onChange={(e) => setWidth(Number(e.target.value))}
                     />
                     <Text>Benzersiz parçalar için:</Text>
