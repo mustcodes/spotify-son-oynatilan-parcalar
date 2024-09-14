@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
     return (
         <div className="container">
             <Head>
-                <title>Spotify Son Oynatılan Parçalar - Mustafa Arda Düşova</title>
+                <title>Spotify Son Oynatılan Müzikler - Mustafa Arda Düşova</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
@@ -41,7 +41,7 @@ export default function Home(): JSX.Element {
                     <Breadcrumb.Item href="https://github.com/mustcodes/spotify-son-oynatilan-parcalar">Kaynak kodunu görüntüle</Breadcrumb.Item>
                 </Breadcrumb>
                 <Title level={2} style={{ fontWeight: 700, color: '#1DB954' }}>
-                    Spotify Son Çalınan Parçalar
+                    Spotify Son Oynatılan Müzikler
                 </Title>
             </div>
 
