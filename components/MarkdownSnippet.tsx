@@ -114,6 +114,16 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 <img src={`${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}`} alt="Preview" style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }} />
             </div>
 
+            <div className="section">
+                <Title level={5}>Markdown Kodunuz:</Title>
+                <TextArea
+                    className="markdown"
+                    autoSize
+                    readOnly
+                    value={`Özel genişlik için:\n${customWidthMarkdown}\n\nÖzel sayı için:\n${customCountMarkdown}\n\nBenzersiz parçalar için:\n${customUniqueMarkdown}`}
+                />
+            </div>
+
             <style jsx>{`
                 .container {
                     max-width: 800px;
