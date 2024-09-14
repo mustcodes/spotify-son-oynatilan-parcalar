@@ -144,7 +144,13 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                     {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
                                 </b>
                             </Text>
-                            <TextArea className="html-code" autoSize readOnly value={htmlCountCode} />
+                            <div className="example">
+                                <div className="html-example">
+                                    <h4>Slider Örneği:</h4>
+                                    <input type="range" min="1" max="10" value={count} readOnly />
+                                </div>
+                                <TextArea className="html-code" autoSize readOnly value={htmlCountCode} />
+                            </div>
                         </div>
 
                         <div className="section">
@@ -154,12 +160,31 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                     {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
                                 </b>
                             </Text>
-                            <TextArea className="html-code" autoSize readOnly value={htmlWidthCode} />
+                            <div className="example">
+                                <div className="html-example">
+                                    <h4>Slider Örneği:</h4>
+                                    <input type="range" min={Constants.minWidth} max={Constants.maxWidth} value={width} readOnly />
+                                </div>
+                                <TextArea className="html-code" autoSize readOnly value={htmlWidthCode} />
+                            </div>
                         </div>
 
                         <div className="section">
                             <Text>Benzersiz parçalar için:</Text>
-                            <TextArea className="html-code" autoSize readOnly value={htmlUniqueCode} />
+                            <div className="example">
+                                <div className="html-example">
+                                    <h4>Radio Button Örneği:</h4>
+                                    <label>
+                                        <input type="radio" name="unique" value="true" checked={unique === 'true'} disabled />
+                                        Evet
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="unique" value="false" checked={unique === 'false'} disabled />
+                                        Hayır
+                                    </label>
+                                </div>
+                                <TextArea className="html-code" autoSize readOnly value={htmlUniqueCode} />
+                            </div>
                         </div>
                     </div>
                 </TabPane>
@@ -206,6 +231,18 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     border: 1px solid #d9d9d9;
                 }
 
+                .html-example {
+                    margin-top: 10px;
+                }
+
+                .html-example input[type="range"] {
+                    width: 100%;
+                }
+
+                .example {
+                    margin-bottom: 20px;
+                }
+                
                 .html-code {
                     white-space: pre-wrap;
                 }
