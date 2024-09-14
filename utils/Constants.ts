@@ -11,6 +11,6 @@ export const defaultUniqueTrackSearchLimit = 20;
 export const minCount = 1;
 export const maxCount = 10;
 
-export const defaultWidth = 300;
+export const defaultWidth = 400;
 export const minWidth = 300;
 export const maxWidth = 1000;
