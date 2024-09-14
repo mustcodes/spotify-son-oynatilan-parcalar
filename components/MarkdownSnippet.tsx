@@ -190,7 +190,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 }
 
                 .slider-container {
-                    width: 300px; /* Kaydırıcının genişliğini sabitle */
+                    width: 300px; /* Kaydırıcı genişliği */
                     margin: 0 auto; /* Ortala */
                 }
 
