@@ -1,5 +1,5 @@
-/* Base Styles */
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -17,19 +17,15 @@ a {
 
 .container {
   width: 75%;
-  margin: 0 auto; /* Center container horizontally */
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 25px;
   padding-bottom: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content horizontally */
 }
 
 .spotify-auth-btn {
   background: #1db954 !important;
   border-color: #1db954 !important;
-  color: #fff; /* Ensure button text is white for better contrast */
-  text-align: center; /* Center text inside the button */
 }
 
 .spotify-auth-btn:hover {
@@ -44,48 +40,4 @@ a {
 .markdown {
   font-family: monospace;
   margin-bottom: 8px !important;
-}
-
-/* Responsive Styles */
-@media (max-width: 1200px) {
-  .container {
-    width: 85%;
-  }
-}
-
-@media (max-width: 992px) {
-  .container {
-    width: 90%;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-  }
-
-  .spotify-auth-btn {
-    padding: 10px; /* Adjust button padding for smaller screens */
-  }
-
-  .markdown {
-    font-size: 14px; /* Adjust font size for better readability on small screens */
-  }
-}
-
-@media (max-width: 576px) {
-  .container {
-    width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-
-  .spotify-auth-btn {
-    width: 100%; /* Make button full-width on very small screens */
-    padding: 12px; /* Adjust button padding */
-  }
-
-  .markdown {
-    font-size: 12px; /* Further adjust font size */
-  }
 }
