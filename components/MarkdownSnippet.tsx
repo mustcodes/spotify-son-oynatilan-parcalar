@@ -1,4 +1,4 @@
-import { Input, Space, Typography, Divider, Slider, Form, Radio } from 'antd';
+import { Input, Space, Typography, Divider, Slider, Form, Radio, Button } from 'antd';
 import React, { useState } from 'react';
 import * as Constants from '../utils/Constants';
 
@@ -36,68 +36,70 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     };
 
     return (
-        <Space className="container" direction="vertical" size="large" style={{ width: '100%' }}>
+        <div className="container">
             <Title level={4} style={{ color: '#1DB954' }}>
                 {username} olarak giriş yapıldı.
             </Title>
             <Divider />
 
-            <div className="section">
-                <Title level={5}>Markdown kod parçacığı:</Title>
-                <TextArea className="markdown" autoSize readOnly value={markdownCode} />
-            </div>
+            <div className="form-section">
+                <div className="form-item">
+                    <Title level={5}>Markdown kod parçacığı:</Title>
+                    <TextArea className="markdown" autoSize readOnly value={markdownCode} />
+                </div>
 
-            <div className="section">
-                <Text>
-                    Özel sayı için:
-                    <b>
-                        {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
-                    </b>
-                </Text>
-                <Form.Item label="Sayı" style={{ marginBottom: 0 }}>
-                    <Slider
-                        min={1}
-                        max={10}
-                        step={1}
-                        value={count}
-                        onChange={handleCountChange}
-                        tooltipVisible
-                        tooltipPlacement="top"
-                        style={{ marginBottom: 20 }}
-                    />
-                    <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}&count=${count})`} />
-                </Form.Item>
-            </div>
+                <div className="form-item">
+                    <Text>
+                        Özel sayı için:
+                        <b>
+                            {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
+                        </b>
+                    </Text>
+                    <Form.Item label="Sayı" style={{ marginBottom: 0 }}>
+                        <Slider
+                            min={1}
+                            max={10}
+                            step={1}
+                            value={count}
+                            onChange={handleCountChange}
+                            tooltipVisible
+                            tooltipPlacement="top"
+                            style={{ marginBottom: 20 }}
+                        />
+                        <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}&count=${count})`} />
+                    </Form.Item>
+                </div>
 
-            <div className="section">
-                <Text>
-                    Özel genişlik için:
-                    <b>
-                        {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
-                    </b>
-                </Text>
-                <Form.Item label="Genişlik (px)" style={{ marginBottom: 0 }}>
-                    <Slider
-                        min={Constants.minWidth}
-                        max={Constants.maxWidth}
-                        step={10}
-                        value={width}
-                        onChange={handleWidthChange}
-                        tooltipVisible
-                        tooltipPlacement="top"
-                        style={{ marginBottom: 20 }}
-                    />
-                    <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}&width=${width})`} />
-                </Form.Item>
-            </div>
+                <div className="form-item">
+                    <Text>
+                        Özel genişlik için:
+                        <b>
+                            {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
+                        </b>
+                    </Text>
+                    <Form.Item label="Genişlik (px)" style={{ marginBottom: 0 }}>
+                        <Slider
+                            min={Constants.minWidth}
+                            max={Constants.maxWidth}
+                            step={10}
+                            value={width}
+                            onChange={handleWidthChange}
+                            tooltipVisible
+                            tooltipPlacement="top"
+                            style={{ marginBottom: 20 }}
+                        />
+                        <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}&width=${width})`} />
+                    </Form.Item>
+                </div>
 
-            <div className="section">
-                <Text>Benzersiz parçalar için:</Text>
-                <Radio.Group onChange={handleUniqueChange} value={unique} style={{ marginBottom: 20 }}>
-                    <Radio value="true">Evet</Radio>
-                    <Radio value="false">Hayır</Radio>
-                </Radio.Group>
-                <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`} />
+                <div className="form-item">
+                    <Text>Benzersiz parçalar için:</Text>
+                    <Radio.Group onChange={handleUniqueChange} value={unique} style={{ marginBottom: 20 }}>
+                        <Radio value="true">Evet</Radio>
+                        <Radio value="false">Hayır</Radio>
+                    </Radio.Group>
+                    <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`} />
+                </div>
             </div>
 
             <div className="image-preview">
@@ -109,7 +111,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 />
             </div>
 
-            <div className="section">
+            <div className="markdown-preview">
                 <Title level={5}>Markdown Kodunuz:</Title>
                 <TextArea
                     className="markdown"
@@ -117,6 +119,11 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     readOnly
                     value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
                 />
+            </div>
+
+            <div className="actions">
+                <Button type="primary" onClick={() => alert('Yeniden Yetkilendir')}>Yeniden Yetkilendir</Button>
+                <Button type="link" danger onClick={() => alert('Yerel kimlik bilgilerini temizle')}>Yerel kimlik bilgilerini temizle</Button>
             </div>
 
             <style jsx>{`
@@ -127,10 +134,16 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     background: #fff;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    text-align: center;
                 }
 
-                .section {
+                .form-section {
                     margin-bottom: 20px;
+                }
+
+                .form-item {
+                    margin-bottom: 20px;
+                    text-align: left;
                 }
 
                 .markdown {
@@ -142,14 +155,24 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 }
 
                 .image-preview {
-                    text-align: center;
+                    margin-bottom: 20px;
                 }
 
-                .image-preview img {
-                    border-radius: 8px;
-                    border: 1px solid #d9d9d9;
+                .markdown-preview {
+                    margin-bottom: 20px;
+                }
+
+                .actions {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+
+                .actions .ant-btn {
+                    margin: 0 10px;
                 }
             `}</style>
-        </Space>
+        </div>
     );
 }
