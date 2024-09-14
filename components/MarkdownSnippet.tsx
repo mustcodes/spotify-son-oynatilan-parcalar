@@ -1,4 +1,4 @@
-import { Input, Space, Typography, Divider, Slider, Form, Radio, Tabs } from 'antd';
+import { Input, Space, Typography, Divider, Slider, Form, Radio, Tabs, Tooltip } from 'antd';
 import React, { useState } from 'react';
 import * as Constants from '../utils/Constants';
 
@@ -116,18 +116,16 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                 </b>
                             </Text>
                             <Form.Item label="Sayı" style={{ marginBottom: 0 }}>
-                                <Slider
-                                    min={1}
-                                    max={10}
-                                    step={1}
-                                    value={count}
-                                    onChange={handleCountChange}
-                                    tooltip={{
-                                        formatter: (value) => `${value}`,
-                                        overlayStyle: { fontSize: '14px', color: '#000' }
-                                    }}
-                                    style={{ marginBottom: 20 }}
-                                />
+                                <Tooltip title={`Sayı: ${count}`} overlayStyle={{ fontSize: '14px', color: '#000' }}>
+                                    <Slider
+                                        min={1}
+                                        max={10}
+                                        step={1}
+                                        value={count}
+                                        onChange={handleCountChange}
+                                        style={{ marginBottom: 20 }}
+                                    />
+                                </Tooltip>
                             </Form.Item>
                         </div>
                         <div className="section">
@@ -138,18 +136,16 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                 </b>
                             </Text>
                             <Form.Item label="Genişlik (px)" style={{ marginBottom: 0 }}>
-                                <Slider
-                                    min={Constants.minWidth}
-                                    max={Constants.maxWidth}
-                                    step={10}
-                                    value={width}
-                                    onChange={handleWidthChange}
-                                    tooltip={{
-                                        formatter: (value) => `${value}px`,
-                                        overlayStyle: { fontSize: '14px', color: '#000' }
-                                    }}
-                                    style={{ marginBottom: 20 }}
-                                />
+                                <Tooltip title={`Genişlik: ${width}px`} overlayStyle={{ fontSize: '14px', color: '#000' }}>
+                                    <Slider
+                                        min={Constants.minWidth}
+                                        max={Constants.maxWidth}
+                                        step={10}
+                                        value={width}
+                                        onChange={handleWidthChange}
+                                        style={{ marginBottom: 20 }}
+                                    />
+                                </Tooltip>
                             </Form.Item>
                         </div>
                         <div className="section">
