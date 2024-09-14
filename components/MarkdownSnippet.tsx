@@ -148,7 +148,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 <img
                     src={`${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}`}
                     alt="Spotify Son Oynatılan Parçalar by mdusova"
-                    style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }}
+                    style={{ maxWidth: '800px', width: '100%', maxHeight: '400px', borderRadius: '8px' }}
                 />
             </div>
 
