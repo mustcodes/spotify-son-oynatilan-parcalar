@@ -54,14 +54,10 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 </Col>
             </Row>
             <style jsx>{`
-                .svg-container {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    overflow: hidden;
+                .svg-preview {
                     width: 100%;
-                    max-width: 100%;
-                    height: auto;
+                    height: auto; /* Maintain aspect ratio */
+                    max-width: 100%; /* Ensure the image doesn’t exceed container width */
                 }
 
                 .svg-preview {
