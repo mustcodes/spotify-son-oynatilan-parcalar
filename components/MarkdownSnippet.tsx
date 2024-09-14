@@ -1,4 +1,4 @@
-import { Input, Space, Typography, Tabs, Button } from 'antd';
+import { Input, Space, Typography, Tabs, Switch } from 'antd';
 import React, { useState } from 'react';
 import * as Constants from '../utils/Constants';
 
@@ -56,7 +56,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         type="number"
                         min={Constants.minCount}
                         max={Constants.maxCount}
-                        value={count.toString()}
+                        value={count}
                         onChange={(e) => setCount(Number(e.target.value))}
                     />
                     <Text>
@@ -70,12 +70,16 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         type="number"
                         min={Constants.minWidth}
                         max={Constants.maxWidth}
-                        value={width.toString()}
+                        value={width}
                         onChange={(e) => setWidth(Number(e.target.value))}
                     />
                     <Text>Benzersiz parçalar için:</Text>
-                    <Button onClick={() => setUnique(true)}>Evet</Button>
-                    <Button onClick={() => setUnique(false)}>Hayır</Button>
+                    <Switch
+                        checked={unique}
+                        onChange={(checked) => setUnique(checked)}
+                        checkedChildren="Evet"
+                        unCheckedChildren="Hayır"
+                    />
                 </Space>
             </TabPane>
         </Tabs>
