@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
         if (user) {
             setCurrentUser(user);
         }
-    });
+    }, []);
 
     const handleClearCreds = () => {
         Cookie.remove('spotifyuser');
@@ -37,24 +37,68 @@ export default function Home(): JSX.Element {
                 <Breadcrumb.Item href="/">Anasayfa</Breadcrumb.Item>
             </Breadcrumb>
 
-            <div>
-                <Title level={2}>Spotify Son Çalınan Parçalar README Oluşturucu</Title>
-                {error && <Alert message="Hata" description={error} type="error" style={{ marginBottom: 18 }} />}
+            <div className="content">
+                <Title level={2} style={{ fontWeight: 700, color: '#1DB954' }}>
+                    Spotify Son Çalınan Parçalar README Oluşturucu
+                </Title>
+                
+                {error && (
+                    <Alert
+                        message="Hata"
+                        description={error}
+                        type="error"
+                        showIcon
+                        style={{ marginBottom: 18 }}
+                    />
+                )}
 
                 {!currentUser ? (
-                    <Space className="vert-space" direction="vertical" size="middle">
-                        <Text>Spotify'ı yetkilendirerek başlayalım.</Text>
+                    <Space className="auth-space" direction="vertical" size="middle">
+                        <Text style={{ fontSize: '16px', color: '#595959' }}>
+                            Spotify'ı yetkilendirerek başlayalım.
+                        </Text>
                         <SpotifyAuthButton clientId={ClientId} redirectUri={RedirectUri} />
                     </Space>
                 ) : (
-                    <Space className="vert-space" direction="vertical" size="middle">
+                    <Space className="auth-space" direction="vertical" size="middle">
                         <MarkdownSnippet username={currentUser} />
-                        <SpotifyAuthButton clientId={ClientId} redirectUri={RedirectUri} label="Yeniden Yetkilendir" />
-                        <Button type="link" danger onClick={handleClearCreds}>
-                        Yerel kimlik bilgilerini temizle</Button>
+                        <SpotifyAuthButton
+                            clientId={ClientId}
+                            redirectUri={RedirectUri}
+                            label="Yeniden Yetkilendir"
+                        />
+                        <Button
+                            type="link"
+                            danger
+                            onClick={handleClearCreds}
+                            style={{ fontSize: '14px', padding: '0' }}
+                        >
+                            Yerel kimlik bilgilerini temizle
+                        </Button>
                     </Space>
                 )}
             </div>
+
+            <style jsx>{`
+                .container {
+                    max-width: 900px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+
+                .content {
+                    background: #f9f9f9;
+                    border-radius: 8px;
+                    padding: 20px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+                .auth-space {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            `}</style>
         </div>
     );
 }
