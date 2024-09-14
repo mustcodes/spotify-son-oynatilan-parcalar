@@ -22,27 +22,10 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     }
 
     const svgSrc = `${Constants.BaseUrl}/api?user=${username}`;
-    const markdownCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc})`;
     const customMarkdownCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''})`;
-
-    const markdownCountCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc}&count=${count})`;
-    const markdownWidthCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc}&width=${width})`;
-    const markdownUniqueCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`;
 
     const htmlCode = `
         <img src="${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}" alt="Spotify Son Oynatılan Parçalar by mdusova" style="border-radius: 8px;" />
-    `;
-
-    const htmlCountCode = `
-        <img src="${svgSrc}&count=${count}" alt="Spotify Son Oynatılan Parçalar by mdusova" />
-    `;
-    
-    const htmlWidthCode = `
-        <img src="${svgSrc}&width=${width}" alt="Spotify Son Oynatılan Parçalar by mdusova" />
-    `;
-    
-    const htmlUniqueCode = `
-        <img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Spotify Son Oynatılan Parçalar by mdusova" />
     `;
 
     const handleWidthChange = (value: number) => {
@@ -58,8 +41,8 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     };
 
     return (
-        <Space className="container" direction="vertical" size="large" style={{ width: '100%' }}>
-            <Title level={4} style={{ color: 'gray' }}>
+        <Space className="container" direction="vertical" size="large">
+            <Title level={4} style={{ color: '#333' }}>
                 {username} olarak giriş yapıldı.
             </Title>
             <Divider />
@@ -73,7 +56,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                             autoSize
                             readOnly
                             value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
-                            style={{ width: '600px' }} // Sabit genişlik
+                            style={{ width: '100%', maxWidth: '600px' }} // Sabit genişlik
                         />
                     </div>
                 </TabPane>
@@ -85,7 +68,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                             autoSize
                             readOnly
                             value={htmlCode}
-                            style={{ width: '600px' }} // Sabit genişlik
+                            style={{ width: '100%', maxWidth: '600px' }} // Sabit genişlik
                         />
                     </div>
                 </TabPane>
@@ -179,36 +162,30 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
                 .image-preview {
                     text-align: center;
-                    background: transparent; /* Arka planı kaldır */
-                    padding: 0; /* Padding kaldır */
-                    margin-top: 20px; /* Üstten boşluk ekle */
+                    background: transparent;
+                    padding: 0;
+                    margin-top: 20px;
                 }
 
                 .image-preview img {
-                    border: none; /* Kenarlığı kaldır */
+                    border: none;
                     border-radius: 8px;
                 }
 
                 .slider-container {
-                    width: 100%; /* Kaydırıcı kapsayıcı genişliği tam genişlik */
-                    max-width: 300px; /* Maksimum genişlik */
-                    margin: 0 auto; /* Ortala */
-                }
-
-                .html-example {
-                    margin-top: 10px;
-                }
-
-                .html-example input[type="range"] {
                     width: 100%;
+                    max-width: 300px;
+                    margin: 0 auto;
                 }
 
-                .example {
-                    margin-bottom: 20px;
-                }
-                
-                .html-code {
-                    white-space: pre-wrap;
+                @media (max-width: 768px) {
+                    .slider-container {
+                        max-width: 100%;
+                    }
+
+                    .markdown, .html-code {
+                        width: 100%;
+                    }
                 }
             `}</style>
         </Space>
