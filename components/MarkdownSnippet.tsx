@@ -1,9 +1,10 @@
-import { Input, Space, Typography, Divider, Slider, Form, Radio, Switch } from 'antd';
+import { Input, Space, Typography, Divider, Slider, Form, Radio, Tabs } from 'antd';
 import React, { useState } from 'react';
 import * as Constants from '../utils/Constants';
 
 const { Text, Title } = Typography;
 const { TextArea } = Input;
+const { TabPane } = Tabs;
 
 interface Props {
     username?: string;
@@ -14,7 +15,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const [width, setWidth] = useState<number>(400); // Varsayılan genişlik
     const [count, setCount] = useState<number>(5); // Varsayılan özel sayı
     const [unique, setUnique] = useState<string>('false'); // Varsayılan benzersiz parça
-    const [showHtml, setShowHtml] = useState<boolean>(false); // HTML veya Markdown gösterimi
+    const [activeTab, setActiveTab] = useState<string>('markdown'); // Aktif sekme (markdown veya html)
 
     if (!username) {
         return null;
@@ -51,33 +52,27 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             </Title>
             <Divider />
 
-            <div className="switch-container">
-                <Text>Markdown</Text>
-                <Switch checked={!showHtml} onChange={() => setShowHtml(false)} />
-                <Text>HTML</Text>
-                <Switch checked={showHtml} onChange={() => setShowHtml(true)} />
-            </div>
-
-            <div className="section">
-                <Title level={5}>Markdown kod parçacığı:</Title>
-                {showHtml ? null : (
-                    <>
+            <Tabs defaultActiveKey="markdown" onChange={(key) => setActiveTab(key)} style={{ marginBottom: 20 }}>
+                <TabPane tab="Markdown" key="markdown">
+                    <div className="section">
+                        <Title level={5}>Markdown kod parçacığı:</Title>
                         <TextArea className="markdown" autoSize readOnly value={markdownCode} />
                         <TextArea className="markdown" autoSize readOnly value={customMarkdownCode} />
                         <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
                         <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
                         <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
-                    </>
-                )}
-                {showHtml ? (
-                    <>
+                    </div>
+                </TabPane>
+                <TabPane tab="HTML" key="html">
+                    <div className="section">
+                        <Title level={5}>HTML kod parçacığı:</Title>
                         <TextArea className="html-code" autoSize readOnly value={htmlCode} />
                         <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&count=${count}" alt="Preview" />`} />
                         <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&width=${width}" alt="Preview" />`} />
                         <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />`} />
-                    </>
-                ) : null}
-            </div>
+                    </div>
+                </TabPane>
+            </Tabs>
 
             <div className="section">
                 <Text>
@@ -146,16 +141,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     background: #fff;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                }
-
-                .switch-container {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 20px;
-                }
-
-                .switch-container .ant-switch {
-                    margin: 0 10px;
                 }
 
                 .section {
