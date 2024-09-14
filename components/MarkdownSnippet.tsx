@@ -1,4 +1,4 @@
-import { Input, Space, Typography, Divider, Slider, Form, Button, Radio } from 'antd';
+import { Input, Space, Typography, Divider, Slider, Form, Radio } from 'antd';
 import React, { useState } from 'react';
 import * as Constants from '../utils/Constants';
 
@@ -16,7 +16,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const [unique, setUnique] = useState<string>('false'); // Varsayılan benzersiz parça
     const [customWidthMarkdown, setCustomWidthMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&width=400)`);
     const [customCountMarkdown, setCustomCountMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&count=5)`);
-    const [customUniqueMarkdown, setCustomUniqueMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&unique=false)`);
+    const [customUniqueMarkdown, setCustomUniqueMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username})`);
 
     if (!username) {
         return null;
@@ -26,7 +26,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const markdownCode = `![Alt text](${svgSrc})`;
     const customWidthCode = `![Alt text](${svgSrc}&width=${width})`;
     const customCountCode = `![Alt text](${svgSrc}&count=${count})`;
-    const customUniqueCode = `![Alt text](${svgSrc}&unique=${unique})`;
+    const customUniqueCode = unique === 'true' ? `![Alt text](${svgSrc}&unique=true)` : `![Alt text](${svgSrc})`;
 
     const handleWidthChange = (value: number) => {
         setWidth(value);
@@ -41,7 +41,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const handleUniqueChange = (e: any) => {
         const value = e.target.value;
         setUnique(value);
-        setCustomUniqueMarkdown(`![Alt text](${svgSrc}&unique=${value})`);
+        setCustomUniqueMarkdown(value === 'true' ? `![Alt text](${svgSrc}&unique=true)` : `![Alt text](${svgSrc})`);
     };
 
     return (
@@ -104,16 +104,14 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 <Text>Benzersiz parçalar için:</Text>
                 <Radio.Group onChange={handleUniqueChange} value={unique} style={{ marginBottom: 20 }}>
                     <Radio value="true">Evet</Radio>
-                    <Radio value="1">1</Radio>
-                    <Radio value="on">On</Radio>
-                    <Radio value="yes">Evet</Radio>
+                    <Radio value="false">Hayır</Radio>
                 </Radio.Group>
                 <TextArea className="markdown" autoSize readOnly value={customUniqueCode} />
             </div>
 
             <div className="image-preview">
                 <Title level={5}>Önizleme:</Title>
-                <img src={`${svgSrc}&width=${width}&count=${count}&unique=${unique}`} alt="Preview" style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }} />
+                <img src={`${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}`} alt="Preview" style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }} />
             </div>
 
             <style jsx>{`
