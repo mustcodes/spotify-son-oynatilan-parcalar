@@ -54,14 +54,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 </Col>
             </Row>
             <style jsx>{`
-
-
-                .svg-preview {
-                    width: auto; /* Keep SVG width based on its content on large screens */
-                    height: auto; /* Maintain aspect ratio on large screens */
-                    max-width: 100%; /* Ensure it doesn't exceed container width */
-                }
-
                 .markdown {
                     font-family: monospace;
                     margin-bottom: 8px !important;
