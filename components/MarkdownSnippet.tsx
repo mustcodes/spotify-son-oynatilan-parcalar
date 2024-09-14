@@ -15,7 +15,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const [count, setCount] = useState<number>(5); // Varsayılan özel sayı
     const [customWidthMarkdown, setCustomWidthMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&width=400)`);
     const [customCountMarkdown, setCustomCountMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&count=5)`);
-
+    
     if (!username) {
         return null;
     }
@@ -99,7 +99,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
             <div className="image-preview">
                 <Title level={5}>Önizleme:</Title>
-                <img src={svgSrc + `&width=${width}`} alt="Preview" style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }} />
+                <img src={`${svgSrc}&width=${width}&count=${count}`} alt="Preview" style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }} />
             </div>
 
             <style jsx>{`
