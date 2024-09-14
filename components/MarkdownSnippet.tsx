@@ -121,14 +121,15 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                             </Text>
                             <Form.Item label="Genişlik (px)" style={{ marginBottom: 0 }}>
                                 <Tooltip title={`Genişlik: ${width}px`} overlayStyle={{ fontSize: '14px', color: '#000' }}>
-                                    <Slider
-                                        min={Constants.minWidth}
-                                        max={800} // Maksimum genişliği 800px olarak ayarla
-                                        step={10}
-                                        value={width}
-                                        onChange={handleWidthChange}
-                                        style={{ marginBottom: 20 }}
-                                    />
+                                    <div className="slider-container">
+                                        <Slider
+                                            min={Constants.minWidth}
+                                            max={800} // Maksimum genişlik 800px olarak ayarlandı
+                                            step={10}
+                                            value={width}
+                                            onChange={handleWidthChange}
+                                        />
+                                    </div>
                                 </Tooltip>
                             </Form.Item>
                         </div>
@@ -185,6 +186,11 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 .image-preview img {
                     border: none; /* Kenarlığı kaldır */
                     border-radius: 8px;
+                }
+
+                .slider-container {
+                    width: 300px; /* Kaydırıcının genişliğini sabitle */
+                    margin: 0 auto; /* Ortala */
                 }
 
                 .html-example {
