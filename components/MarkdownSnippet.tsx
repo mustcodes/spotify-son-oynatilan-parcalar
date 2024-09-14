@@ -70,7 +70,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         tooltipPlacement="top"
                         style={{ marginBottom: 20 }}
                     />
-                    <TextArea className="markdown" autoSize readOnly value={customWidthMarkdown} />
+                    <TextArea className="markdown" autoSize readOnly value={customWidthCode} />
                 </Form.Item>
             </div>
 
@@ -81,7 +81,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
             <div className="image-preview">
                 <Title level={5}>Önizleme:</Title>
-                <object type="image/svg+xml" data={svgSrc} style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }}></object>
+                <img src={svgSrc + `&width=${width}`} alt="Preview" style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }} />
             </div>
 
             <style jsx>{`
@@ -110,7 +110,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     text-align: center;
                 }
 
-                .image-preview object {
+                .image-preview img {
                     border-radius: 8px;
                     border: 1px solid #d9d9d9;
                 }
