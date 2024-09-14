@@ -123,7 +123,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                 <Tooltip title={`Genişlik: ${width}px`} overlayStyle={{ fontSize: '14px', color: '#000' }}>
                                     <Slider
                                         min={Constants.minWidth}
-                                        max={Constants.maxWidth}
+                                        max={800} // Maksimum genişliği 800px olarak ayarla
                                         step={10}
                                         value={width}
                                         onChange={handleWidthChange}
@@ -148,7 +148,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 <img
                     src={`${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}`}
                     alt="Spotify Son Oynatılan Parçalar by mdusova"
-                    style={{ maxWidth: '800px', width: '100%', maxHeight: '400px', borderRadius: '8px' }}
+                    style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }}
                 />
             </div>
 
