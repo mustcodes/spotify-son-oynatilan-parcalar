@@ -17,15 +17,19 @@ a {
 
 .container {
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto; /* Center container horizontally */
   padding-top: 25px;
   padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
 }
 
 .spotify-auth-btn {
   background: #1db954 !important;
   border-color: #1db954 !important;
+  color: #fff; /* Ensure button text is white for better contrast */
+  text-align: center; /* Center text inside the button */
 }
 
 .spotify-auth-btn:hover {
