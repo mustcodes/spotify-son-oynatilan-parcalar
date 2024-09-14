@@ -34,12 +34,12 @@ export default function Home(): JSX.Element {
             </Head>
 
             <Breadcrumb separator=">" style={{ marginBottom: 25 }}>
-                <Breadcrumb.Item href="/">Anasayfa</Breadcrumb.Item>
+                <Breadcrumb.Item href="https://mdusova.com/">by mdusova</Breadcrumb.Item>
             </Breadcrumb>
 
             <div className="content">
                 <Title level={2} style={{ fontWeight: 700, color: '#1DB954' }}>
-                    Spotify Son Çalınan Parçalar README Oluşturucu
+                    Spotify Son Çalınan Parçalar
                 </Title>
                 
                 {error && (
