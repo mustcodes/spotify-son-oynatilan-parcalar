@@ -9,6 +9,29 @@ import { ClientId, RedirectUri } from '../utils/Constants';
 
 const { Text, Title } = Typography;
 
+const containerStyle: React.CSSProperties = {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '20px',
+};
+
+const vertSpaceStyle: React.CSSProperties = {
+    marginTop: '10px',
+    marginBottom: '10px',
+};
+
+const responsiveStyles: React.CSSProperties = {
+    '@media (max-width: 768px)': {
+        container: {
+            padding: '15px',
+        },
+        vertSpace: {
+            marginTop: '8px',
+            marginBottom: '8px',
+        },
+    },
+};
+
 export default function Home(): JSX.Element {
     const router = useRouter();
     const [currentUser, setCurrentUser] = useState<string | undefined>(undefined);
@@ -19,7 +42,7 @@ export default function Home(): JSX.Element {
         if (user) {
             setCurrentUser(user);
         }
-    });
+    }, []);
 
     const handleClearCreds = () => {
         Cookie.remove('spotifyuser');
@@ -27,7 +50,7 @@ export default function Home(): JSX.Element {
     };
 
     return (
-        <div className="container">
+        <div style={containerStyle}>
             <Head>
                 <title>Spotify Son Çalınan Parçalar README Oluşturucu</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -42,16 +65,17 @@ export default function Home(): JSX.Element {
                 {error && <Alert message="Hata" description={error} type="error" style={{ marginBottom: 18 }} />}
 
                 {!currentUser ? (
-                    <Space className="vert-space" direction="vertical" size="middle">
+                    <Space style={vertSpaceStyle} direction="vertical" size="middle">
                         <Text>Spotify'ı yetkilendirerek başlayalım.</Text>
                         <SpotifyAuthButton clientId={ClientId} redirectUri={RedirectUri} />
                     </Space>
                 ) : (
-                    <Space className="vert-space" direction="vertical" size="middle">
+                    <Space style={vertSpaceStyle} direction="vertical" size="middle">
                         <MarkdownSnippet username={currentUser} />
                         <SpotifyAuthButton clientId={ClientId} redirectUri={RedirectUri} label="Yeniden Yetkilendir" />
                         <Button type="link" danger onClick={handleClearCreds}>
-                        Yerel kimlik bilgilerini temizle</Button>
+                            Yerel kimlik bilgilerini temizle
+                        </Button>
                     </Space>
                 )}
             </div>
