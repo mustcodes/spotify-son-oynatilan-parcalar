@@ -2,7 +2,7 @@ import { Input, Space, Typography, Divider, Slider, Form, Radio, Tabs, Tooltip }
 import React, { useState } from 'react';
 import * as Constants from '../utils/Constants';
 
-const { Text, Title } = Typography;
+const { Title, Text } = Typography;
 const { TextArea } = Input;
 const { TabPane } = Tabs;
 
@@ -15,34 +15,16 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const [width, setWidth] = useState<number>(400); // Varsayılan genişlik
     const [count, setCount] = useState<number>(5); // Varsayılan özel sayı
     const [unique, setUnique] = useState<string>('false'); // Varsayılan benzersiz parça
-    const [activeTab, setActiveTab] = useState<string>('markdown'); // Aktif sekme (markdown veya html)
+    const [activeTab, setActiveTab] = useState<string>('settings'); // Varsayılan aktif sekme (settings)
 
     if (!username) {
         return null;
     }
 
     const svgSrc = `${Constants.BaseUrl}/api?user=${username}`;
-    const markdownCode = `![Alt text](${svgSrc})`;
-    const customMarkdownCode = `![Alt text](${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''})`;
-
-    const markdownCountCode = `![Alt text](${svgSrc}&count=${count})`;
-    const markdownWidthCode = `![Alt text](${svgSrc}&width=${width})`;
-    const markdownUniqueCode = `![Alt text](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`;
 
     const htmlCode = `
         <img src="${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" style="width: 100%; max-height: 400px; border-radius: 8px;" />
-    `;
-
-    const htmlCountCode = `
-        <img src="${svgSrc}&count=${count}" alt="Preview" />
-    `;
-    
-    const htmlWidthCode = `
-        <img src="${svgSrc}&width=${width}" alt="Preview" />
-    `;
-    
-    const htmlUniqueCode = `
-        <img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />
     `;
 
     const handleWidthChange = (value: number) => {
@@ -64,47 +46,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             </Title>
             <Divider />
 
-            <Tabs defaultActiveKey="markdown" onChange={(key) => setActiveTab(key)} style={{ marginBottom: 20 }}>
-                <TabPane tab="Markdown" key="markdown">
-                    <div className="section">
-                        <Title level={5}>Markdown kod parçacığı:</Title>
-                        <TextArea className="markdown" autoSize readOnly value={markdownCode} />
-                        <div className="section">
-                            <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
-                            <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
-                            <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
-                        </div>
-                        <div className="section">
-                            <Title level={5}>Markdown Kodunuz:</Title>
-                            <TextArea
-                                className="markdown"
-                                autoSize
-                                readOnly
-                                value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
-                            />
-                        </div>
-                    </div>
-                </TabPane>
-                <TabPane tab="HTML" key="html">
-                    <div className="section">
-                        <Title level={5}>HTML kod parçacığı:</Title>
-                        <TextArea className="html-code" autoSize readOnly value={htmlCode} />
-                        <div className="section">
-                            <TextArea className="html-code" autoSize readOnly value={htmlCountCode} />
-                            <TextArea className="html-code" autoSize readOnly value={htmlWidthCode} />
-                            <TextArea className="html-code" autoSize readOnly value={htmlUniqueCode} />
-                        </div>
-                        <div className="section">
-                            <Title level={5}>HTML Kodunuz:</Title>
-                            <TextArea
-                                className="html-code"
-                                autoSize
-                                readOnly
-                                value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${htmlCode}`}
-                            />
-                        </div>
-                    </div>
-                </TabPane>
+            <Tabs defaultActiveKey="settings" onChange={(key) => setActiveTab(key)} style={{ marginBottom: 20 }}>
                 <TabPane tab="Ayarlar" key="settings">
                     <div className="section">
                         <Title level={5}>Ayarlar:</Title>
@@ -182,15 +124,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     margin-bottom: 20px;
                 }
 
-                .markdown, .html-code {
-                    background: #f5f5f5;
-                    border: 1px solid #d9d9d9;
-                    border-radius: 4px;
-                    padding: 8px;
-                    font-family: monospace;
-                    margin-top: 10px;
-                }
-
                 .image-preview {
                     text-align: center;
                 }
@@ -198,22 +131,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 .image-preview img {
                     border-radius: 8px;
                     border: 1px solid #d9d9d9;
-                }
-
-                .html-example {
-                    margin-top: 10px;
-                }
-
-                .html-example input[type="range"] {
-                    width: 100%;
-                }
-
-                .example {
-                    margin-bottom: 20px;
-                }
-                
-                .html-code {
-                    white-space: pre-wrap;
                 }
             `}</style>
         </Space>
