@@ -101,14 +101,15 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                             </Text>
                             <Form.Item label="Sayı" style={{ marginBottom: 0 }}>
                                 <Tooltip title={`Sayı: ${count}`} overlayStyle={{ fontSize: '14px', color: '#000' }}>
-                                    <Slider
-                                        min={1}
-                                        max={10}
-                                        step={1}
-                                        value={count}
-                                        onChange={handleCountChange}
-                                        style={{ marginBottom: 20 }}
-                                    />
+                                    <div className="slider-container">
+                                        <Slider
+                                            min={1}
+                                            max={10}
+                                            step={1}
+                                            value={count}
+                                            onChange={handleCountChange}
+                                        />
+                                    </div>
                                 </Tooltip>
                             </Form.Item>
                         </div>
