@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
         if (user) {
             setCurrentUser(user);
         }
-    }, []);
+    });
 
     const handleClearCreds = () => {
         Cookie.remove('spotifyuser');
@@ -29,136 +29,32 @@ export default function Home(): JSX.Element {
     return (
         <div className="container">
             <Head>
-                <title>Spotify Son Oynatılan Müzikler - Mustafa Arda Düşova</title>
+                <title>Spotify Son Çalınan Parçalar README Oluşturucu</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className="header">
-                <Breadcrumb separator=">" style={{ marginBottom: 25 }}>
-                    <Breadcrumb.Item href="https://mdusova.com/">Yapımcı: mdusova</Breadcrumb.Item>
-                </Breadcrumb>
-                 <Breadcrumb separator=">" style={{ marginBottom: 25 }}>
-                    <Breadcrumb.Item href="https://github.com/mustcodes/spotify-son-oynatilan-parcalar">Kaynak kodunu görüntüle</Breadcrumb.Item>
-                </Breadcrumb>
-                <Title level={2} style={{ fontWeight: 700, color: '#1DB954' }}>
-                    Spotify Son Oynatılan Müzikler
-                </Title>
-            </div>
+            <Breadcrumb separator=">" style={{ marginBottom: 25 }}>
+                <Breadcrumb.Item href="/">Anasayfa</Breadcrumb.Item>
+            </Breadcrumb>
 
-            <div className="content">
-                {error && (
-                    <Alert
-                        message="Hata"
-                        description={error}
-                        type="error"
-                        showIcon
-                        style={{ marginBottom: 18 }}
-                    />
-                )}
+            <div>
+                <Title level={2}>Spotify Son Çalınan Parçalar README Oluşturucu</Title>
+                {error && <Alert message="Hata" description={error} type="error" style={{ marginBottom: 18 }} />}
 
                 {!currentUser ? (
-                    <Space className="auth-space" direction="vertical" size="middle">
-                        <Text style={{ fontSize: '16px', color: '#595959' }}>
-                            Spotify'ı yetkilendirerek başlayalım.
-                        </Text>
+                    <Space className="vert-space" direction="vertical" size="middle">
+                        <Text>Spotify'ı yetkilendirerek başlayalım.</Text>
                         <SpotifyAuthButton clientId={ClientId} redirectUri={RedirectUri} />
                     </Space>
                 ) : (
-                    <Space className="auth-space" direction="vertical" size="middle">
+                    <Space className="vert-space" direction="vertical" size="middle">
                         <MarkdownSnippet username={currentUser} />
-                        <SpotifyAuthButton
-                            clientId={ClientId}
-                            redirectUri={RedirectUri}
-                            label="Yeniden Yetkilendir"
-                        />
-                        <Button
-                            type="link"
-                            danger
-                            onClick={handleClearCreds}
-                            style={{ fontSize: '14px', padding: '0' }}
-                        >
-                            Yerel kimlik bilgilerini temizle
-                        </Button>
+                        <SpotifyAuthButton clientId={ClientId} redirectUri={RedirectUri} label="Yeniden Yetkilendir" />
+                        <Button type="link" danger onClick={handleClearCreds}>
+                        Yerel kimlik bilgilerini temizle</Button>
                     </Space>
                 )}
             </div>
-
-            <style jsx>{`
-                .container {
-                    max-width: 900px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .header {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    text-align: center;
-                    margin-bottom: 20px;
-                }
-
-                .content {
-                    background: #f9f9f9;
-                    border-radius: 8px;
-                    padding: 20px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    width: 100%;
-                    max-width: 800px;
-                }
-
-                .auth-space {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    text-align: center;
-                }
-
-                @media (max-width: 768px) {
-                    .container {
-                        padding: 10px;
-                    }
-
-                    .header {
-                        margin-bottom: 15px;
-                    }
-
-                    .content {
-                        padding: 15px;
-                    }
-
-                    .auth-space .ant-btn,
-                    .auth-space .ant-btn-link {
-                        font-size: 12px;
-                    }
-
-                    .auth-space .ant-typography {
-                        font-size: 14px;
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .header {
-                        margin-bottom: 10px;
-                    }
-
-                    .content {
-                        padding: 10px;
-                    }
-
-                    .auth-space .ant-btn,
-                    .auth-space .ant-btn-link {
-                        font-size: 10px;
-                    }
-
-                    .auth-space .ant-typography {
-                        font-size: 12px;
-                    }
-                }
-            `}</style>
         </div>
     );
 }
