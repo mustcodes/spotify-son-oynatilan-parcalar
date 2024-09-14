@@ -1,5 +1,3 @@
-
-Kodu kopyala
 import { Alert, Breadcrumb, Button, Space, Typography } from 'antd';
 import Cookie from 'js-cookie';
 import Head from 'next/head';
