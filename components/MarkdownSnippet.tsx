@@ -121,9 +121,9 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 />
             </div>
 
-            <div className="button-container">
-                <Button type="primary" onClick={() => alert('Yeniden Yetkilendir')}>Yeniden Yetkilendir</Button>
-                <Button type="link" danger onClick={() => alert('Yerel kimlik bilgilerini temizle')}>Yerel kimlik bilgilerini temizle</Button>
+            <div className="actions">
+                <Button type="primary">Yeniden Yetkilendir</Button>
+                <Button type="link" danger>Yerel kimlik bilgilerini temizle</Button>
             </div>
 
             <style jsx>{`
@@ -139,11 +139,11 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
                 .form-section {
                     margin-bottom: 20px;
-                    text-align: left;
                 }
 
                 .form-item {
                     margin-bottom: 20px;
+                    text-align: left;
                 }
 
                 .markdown {
@@ -162,14 +162,13 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     margin-bottom: 20px;
                 }
 
-                .button-container {
+                .actions {
                     display: flex;
                     justify-content: center;
                     gap: 10px;
-                    margin-top: 20px;
                 }
 
-                .button-container .ant-btn {
+                .actions .ant-btn {
                     margin: 0 10px;
                 }
             `}</style>
