@@ -57,72 +57,101 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     <div className="section">
                         <Title level={5}>Markdown kod parçacığı:</Title>
                         <TextArea className="markdown" autoSize readOnly value={markdownCode} />
-                        <TextArea className="markdown" autoSize readOnly value={customMarkdownCode} />
-                        <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
-                        <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
-                        <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
+                        <div className="section">
+                            <Text>
+                                Özel sayı için:
+                                <b>
+                                    {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
+                                </b>
+                            </Text>
+                            <Form.Item label="Sayı" style={{ marginBottom: 0 }}>
+                                <Slider
+                                    min={1}
+                                    max={10}
+                                    step={1}
+                                    value={count}
+                                    onChange={handleCountChange}
+                                    tooltipVisible
+                                    tooltipPlacement="top"
+                                    style={{ marginBottom: 20 }}
+                                />
+                            </Form.Item>
+                            <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
+                        </div>
+
+                        <div className="section">
+                            <Text>
+                                Özel genişlik için:
+                                <b>
+                                    {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
+                                </b>
+                            </Text>
+                            <Form.Item label="Genişlik (px)" style={{ marginBottom: 0 }}>
+                                <Slider
+                                    min={Constants.minWidth}
+                                    max={Constants.maxWidth}
+                                    step={10}
+                                    value={width}
+                                    onChange={handleWidthChange}
+                                    tooltipVisible
+                                    tooltipPlacement="top"
+                                    style={{ marginBottom: 20 }}
+                                />
+                            </Form.Item>
+                            <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
+                        </div>
+
+                        <div className="section">
+                            <Text>Benzersiz parçalar için:</Text>
+                            <Radio.Group onChange={handleUniqueChange} value={unique} style={{ marginBottom: 20 }}>
+                                <Radio value="true">Evet</Radio>
+                                <Radio value="false">Hayır</Radio>
+                            </Radio.Group>
+                            <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
+                        </div>
+
+                        <div className="section">
+                            <Title level={5}>Markdown Kodunuz:</Title>
+                            <TextArea
+                                className="markdown"
+                                autoSize
+                                readOnly
+                                value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
+                            />
+                        </div>
                     </div>
                 </TabPane>
                 <TabPane tab="HTML" key="html">
                     <div className="section">
                         <Title level={5}>HTML kod parçacığı:</Title>
                         <TextArea className="html-code" autoSize readOnly value={htmlCode} />
-                        <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&count=${count}" alt="Preview" />`} />
-                        <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&width=${width}" alt="Preview" />`} />
-                        <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />`} />
+                        <div className="section">
+                            <Text>
+                                Özel sayı için:
+                                <b>
+                                    {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
+                                </b>
+                            </Text>
+                            <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&count=${count}" alt="Preview" />`} />
+                        </div>
+
+                        <div className="section">
+                            <Text>
+                                Özel genişlik için:
+                                <b>
+                                    {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
+                                </b>
+                            </Text>
+                            <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&width=${width}" alt="Preview" />`} />
+                        </div>
+
+                        <div className="section">
+                            <Text>Benzersiz parçalar için:</Text>
+                            <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />`} />
+                        </div>
                     </div>
                 </TabPane>
             </Tabs>
-
-            <div className="section">
-                <Text>
-                    Özel sayı için:
-                    <b>
-                        {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
-                    </b>
-                </Text>
-                <Form.Item label="Sayı" style={{ marginBottom: 0 }}>
-                    <Slider
-                        min={1}
-                        max={10}
-                        step={1}
-                        value={count}
-                        onChange={handleCountChange}
-                        tooltipVisible
-                        tooltipPlacement="top"
-                        style={{ marginBottom: 20 }}
-                    />
-                </Form.Item>
-            </div>
-
-            <div className="section">
-                <Text>
-                    Özel genişlik için:
-                    <b>
-                        {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
-                    </b>
-                </Text>
-                <Form.Item label="Genişlik (px)" style={{ marginBottom: 0 }}>
-                    <Slider
-                        min={Constants.minWidth}
-                        max={Constants.maxWidth}
-                        step={10}
-                        value={width}
-                        onChange={handleWidthChange}
-                        tooltipVisible
-                        tooltipPlacement="top"
-                        style={{ marginBottom: 20 }}
-                    />
-                </Form.Item>
-            </div>
-
-            <div className="section">
-                <Text>Benzersiz parçalar için:</Text>
-                <Radio.Group onChange={handleUniqueChange} value={unique} style={{ marginBottom: 20 }}>
-                    <Radio value="true">Evet</Radio>
-                    <Radio value="false">Hayır</Radio>
-                </Radio.Group>
-            </div>
 
             <div className="image-preview">
                 <Title level={5}>Önizleme:</Title>
