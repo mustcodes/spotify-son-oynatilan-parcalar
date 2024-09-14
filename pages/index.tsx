@@ -1,3 +1,5 @@
+
+Kodu kopyala
 import { Alert, Breadcrumb, Button, Space, Typography } from 'antd';
 import Cookie from 'js-cookie';
 import Head from 'next/head';
@@ -33,15 +35,16 @@ export default function Home(): JSX.Element {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Breadcrumb separator=">" style={{ marginBottom: 25 }}>
-                <Breadcrumb.Item href="https://mdusova.com/">by mdusova</Breadcrumb.Item>
-            </Breadcrumb>
-
-            <div className="content">
+            <div className="header">
+                <Breadcrumb separator=">" style={{ marginBottom: 25 }}>
+                    <Breadcrumb.Item href="https://mdusova.com/">by mdusova</Breadcrumb.Item>
+                </Breadcrumb>
                 <Title level={2} style={{ fontWeight: 700, color: '#1DB954' }}>
                     Spotify Son Çalınan Parçalar
                 </Title>
-                
+            </div>
+
+            <div className="content">
                 {error && (
                     <Alert
                         message="Hata"
@@ -84,6 +87,17 @@ export default function Home(): JSX.Element {
                     max-width: 900px;
                     margin: 0 auto;
                     padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .header {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    margin-bottom: 20px;
                 }
 
                 .content {
@@ -91,12 +105,57 @@ export default function Home(): JSX.Element {
                     border-radius: 8px;
                     padding: 20px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    width: 100%;
+                    max-width: 800px;
                 }
 
                 .auth-space {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    text-align: center;
+                }
+
+                @media (max-width: 768px) {
+                    .container {
+                        padding: 10px;
+                    }
+
+                    .header {
+                        margin-bottom: 15px;
+                    }
+
+                    .content {
+                        padding: 15px;
+                    }
+
+                    .auth-space .ant-btn,
+                    .auth-space .ant-btn-link {
+                        font-size: 12px;
+                    }
+
+                    .auth-space .ant-typography {
+                        font-size: 14px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .header {
+                        margin-bottom: 10px;
+                    }
+
+                    .content {
+                        padding: 10px;
+                    }
+
+                    .auth-space .ant-btn,
+                    .auth-space .ant-btn-link {
+                        font-size: 10px;
+                    }
+
+                    .auth-space .ant-typography {
+                        font-size: 12px;
+                    }
                 }
             `}</style>
         </div>
