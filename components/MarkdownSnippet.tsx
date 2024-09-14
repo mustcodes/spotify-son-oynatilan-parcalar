@@ -1,7 +1,6 @@
 import { Input, Space, Typography } from 'antd';
 import React from 'react';
 import * as Constants from '../utils/Constants';
-import '../styles/styles.css'; // Stil dosyanızı import edin
 
 const { Text, Title } = Typography;
 const { TextArea } = Input;
