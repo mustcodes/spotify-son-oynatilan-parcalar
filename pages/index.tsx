@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import MarkdownSnippet from '../components/MarkdownSnippet';
 import SpotifyAuthButton from '../components/SpotifyAuthButton';
 import { ClientId, RedirectUri } from '../utils/Constants';
+import '../styles/styles.css'; // Stil dosyanızı import edin
 
 const { Text, Title } = Typography;
 
@@ -18,18 +19,6 @@ const containerStyle: React.CSSProperties = {
 const vertSpaceStyle: React.CSSProperties = {
     marginTop: '10px',
     marginBottom: '10px',
-};
-
-const responsiveStyles: React.CSSProperties = {
-    '@media (max-width: 768px)': {
-        container: {
-            padding: '15px',
-        },
-        vertSpace: {
-            marginTop: '8px',
-            marginBottom: '8px',
-        },
-    },
 };
 
 export default function Home(): JSX.Element {
