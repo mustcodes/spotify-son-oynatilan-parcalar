@@ -5,11 +5,31 @@ import * as Constants from '../utils/Constants';
 const { Text, Title } = Typography;
 const { TextArea } = Input;
 
-interface Props {
+const markdownStyle: React.CSSProperties = {
+    width: '100%',
+    fontFamily: 'monospace',
+    borderRadius: '4px',
+    border: '1px solid #d9d9d9',
+    padding: '8px',
+    boxSizing: 'border-box',
+};
 
+const vertSpaceStyle: React.CSSProperties = {
+    marginTop: '10px',
+    marginBottom: '10px',
+};
+
+const responsiveStyles: React.CSSProperties = {
+    '@media (max-width: 768px)': {
+        markdown: {
+            fontSize: '14px',
+        },
+    },
+};
+
+interface Props {
     username?: string;
 }
-
 
 export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const { username } = props;
@@ -24,28 +44,28 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const uniqueTracks = `![Alt text](${svgSrc}&unique={true|1|on|yes})`;
 
     return (
-        <Space className="vert-space" direction="vertical" size="small">
+        <Space style={vertSpaceStyle} direction="vertical" size="small">
             <Title level={5}>{username} olarak giriş yapıldı.</Title>
             <Text>Markdown kod parçacığı:</Text>
-            <TextArea className="markdown" autoSize readOnly value={markdownCode} />
+            <TextArea style={markdownStyle} autoSize readOnly value={markdownCode} />
             <Text>
-            Özel sayı için (
+                Özel sayı için (
                 <b>
                     {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
                 </b>
                 ):
             </Text>
-            <TextArea className="markdown" autoSize readOnly value={customCount} />
+            <TextArea style={markdownStyle} autoSize readOnly value={customCount} />
             <Text>
-            Özel genişlik için (
+                Özel genişlik için (
                 <b>
                     {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
                 </b>
                 ):
             </Text>
-            <TextArea className="markdown" autoSize readOnly value={customWidth} />
+            <TextArea style={markdownStyle} autoSize readOnly value={customWidth} />
             <Text>Benzersiz parçalar için:</Text>
-            <TextArea className="markdown" autoSize readOnly value={uniqueTracks} />
+            <TextArea style={markdownStyle} autoSize readOnly value={uniqueTracks} />
             <object type="image/svg+xml" data={svgSrc}></object>
         </Space>
     );
