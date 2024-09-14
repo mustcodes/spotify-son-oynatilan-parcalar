@@ -122,8 +122,10 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                     step={1}
                                     value={count}
                                     onChange={handleCountChange}
-                                    tooltipVisible
-                                    tooltipPlacement="top"
+                                    tooltip={{
+                                        formatter: (value) => `${value}`,
+                                        overlayStyle: { fontSize: '14px', color: '#000' }
+                                    }}
                                     style={{ marginBottom: 20 }}
                                 />
                             </Form.Item>
@@ -142,8 +144,10 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                     step={10}
                                     value={width}
                                     onChange={handleWidthChange}
-                                    tooltipVisible
-                                    tooltipPlacement="top"
+                                    tooltip={{
+                                        formatter: (value) => `${value}px`,
+                                        overlayStyle: { fontSize: '14px', color: '#000' }
+                                    }}
                                     style={{ marginBottom: 20 }}
                                 />
                             </Form.Item>
