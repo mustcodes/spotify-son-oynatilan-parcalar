@@ -22,27 +22,27 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     }
 
     const svgSrc = `${Constants.BaseUrl}/api?user=${username}`;
-    const markdownCode = `![Alt text](${svgSrc})`;
-    const customMarkdownCode = `![Alt text](${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''})`;
+    const markdownCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc})`;
+    const customMarkdownCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''})`;
 
-    const markdownCountCode = `![Alt text](${svgSrc}&count=${count})`;
-    const markdownWidthCode = `![Alt text](${svgSrc}&width=${width})`;
-    const markdownUniqueCode = `![Alt text](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`;
+    const markdownCountCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc}&count=${count})`;
+    const markdownWidthCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc}&width=${width})`;
+    const markdownUniqueCode = `![Spotify Son Oynatılan Parçalar by mdusova](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`;
 
     const htmlCode = `
-        <img src="${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" style="width: 100%; max-height: 400px; border-radius: 8px;" />
+        <img src="${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}" alt="Spotify Son Oynatılan Parçalar by mdusova" style="border-radius: 8px;" />
     `;
 
     const htmlCountCode = `
-        <img src="${svgSrc}&count=${count}" alt="Preview" />
+        <img src="${svgSrc}&count=${count}" alt="Spotify Son Oynatılan Parçalar by mdusova" />
     `;
     
     const htmlWidthCode = `
-        <img src="${svgSrc}&width=${width}" alt="Preview" />
+        <img src="${svgSrc}&width=${width}" alt="Spotify Son Oynatılan Parçalar by mdusova" />
     `;
     
     const htmlUniqueCode = `
-        <img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />
+        <img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Spotify Son Oynatılan Parçalar by mdusova" />
     `;
 
     const handleWidthChange = (value: number) => {
@@ -59,7 +59,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
     return (
         <Space className="container" direction="vertical" size="large" style={{ width: '100%' }}>
-            <Title level={4} style={{ color: '#1DB954' }}>
+            <Title level={4} style={{ color: 'gray' }}>
                 {username} olarak giriş yapıldı.
             </Title>
             <Divider />
@@ -73,13 +73,20 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                             autoSize
                             readOnly
                             value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
+                            style={{ width: '600px' }} // Sabit genişlik
                         />
                     </div>
                 </TabPane>
                 <TabPane tab="HTML" key="html">
                     <div className="section">
                         <Title level={5}>HTML Kodunuz:</Title>
-                        <TextArea className="html-code" autoSize readOnly value={htmlCode} />
+                        <TextArea
+                            className="html-code"
+                            autoSize
+                            readOnly
+                            value={htmlCode}
+                            style={{ width: '600px' }} // Sabit genişlik
+                        />
                     </div>
                 </TabPane>
                 <TabPane tab="Ayarlar" key="settings">
@@ -140,7 +147,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 <Title level={5}>Önizleme:</Title>
                 <img
                     src={`${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}`}
-                    alt="Preview"
+                    alt="Spotify Son Oynatılan Parçalar by mdusova"
                     style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }}
                 />
             </div>
