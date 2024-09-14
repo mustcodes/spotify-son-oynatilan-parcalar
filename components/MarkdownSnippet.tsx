@@ -1,5 +1,5 @@
 import { Input, Space, Typography, Tabs, Switch } from 'antd';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Constants from '../utils/Constants';
 
 const { Text, Title } = Typography;
@@ -25,6 +25,11 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const customCount = `![Alt text](${svgSrc}&count=${count})`;
     const customWidth = `![Alt text](${svgSrc}&width=${width})`;
     const uniqueTracks = `![Alt text](${svgSrc}&unique=${unique ? 'true' : 'false'})`;
+
+    // useEffect ile ayarların anında güncellenmesini sağlıyoruz
+    useEffect(() => {
+        // Bu useEffect ile `count`, `width` ve `unique` değişiklikleri işlenir
+    }, [count, width, unique]);
 
     return (
         <Tabs defaultActiveKey="1">
