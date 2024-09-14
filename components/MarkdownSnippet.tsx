@@ -33,6 +33,18 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
         <img src="${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" style="width: 100%; max-height: 400px; border-radius: 8px;" />
     `;
 
+    const htmlCountCode = `
+        <img src="${svgSrc}&count=${count}" alt="Preview" />
+    `;
+    
+    const htmlWidthCode = `
+        <img src="${svgSrc}&width=${width}" alt="Preview" />
+    `;
+    
+    const htmlUniqueCode = `
+        <img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />
+    `;
+
     const handleWidthChange = (value: number) => {
         setWidth(value);
     };
@@ -132,7 +144,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                     {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
                                 </b>
                             </Text>
-                            <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&count=${count}" alt="Preview" />`} />
+                            <TextArea className="html-code" autoSize readOnly value={htmlCountCode} />
                         </div>
 
                         <div className="section">
@@ -142,12 +154,12 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                     {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
                                 </b>
                             </Text>
-                            <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&width=${width}" alt="Preview" />`} />
+                            <TextArea className="html-code" autoSize readOnly value={htmlWidthCode} />
                         </div>
 
                         <div className="section">
                             <Text>Benzersiz parçalar için:</Text>
-                            <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />`} />
+                            <TextArea className="html-code" autoSize readOnly value={htmlUniqueCode} />
                         </div>
                     </div>
                 </TabPane>
