@@ -177,11 +177,14 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
                 .image-preview {
                     text-align: center;
+                    background: transparent; /* Arka planı kaldır */
+                    padding: 0; /* Padding kaldır */
+                    margin-top: 20px; /* Üstten boşluk ekle */
                 }
 
                 .image-preview img {
+                    border: none; /* Kenarlığı kaldır */
                     border-radius: 8px;
-                    border: 1px solid #d9d9d9;
                 }
 
                 .html-example {
