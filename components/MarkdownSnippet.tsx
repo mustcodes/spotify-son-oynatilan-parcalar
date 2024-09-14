@@ -23,6 +23,14 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const markdownCode = `![Alt text](${svgSrc})`;
     const customMarkdownCode = `![Alt text](${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''})`;
 
+    const markdownCountCode = `![Alt text](${svgSrc}&count=${count})`;
+    const markdownWidthCode = `![Alt text](${svgSrc}&width=${width})`;
+    const markdownUniqueCode = `![Alt text](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`;
+
+    const htmlCode = `
+        <img src="${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" style="width: 100%; max-height: 400px; border-radius: 8px;" />
+    `;
+
     const handleWidthChange = (value: number) => {
         setWidth(value);
     };
@@ -45,6 +53,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             <div className="section">
                 <Title level={5}>Markdown kod parçacığı:</Title>
                 <TextArea className="markdown" autoSize readOnly value={markdownCode} />
+                <TextArea className="html-code" autoSize readOnly value={htmlCode} />
             </div>
 
             <div className="section">
@@ -65,7 +74,8 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         tooltipPlacement="top"
                         style={{ marginBottom: 20 }}
                     />
-                    <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}&count=${count})`} />
+                    <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
+                    <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&count=${count}" alt="Preview" />`} />
                 </Form.Item>
             </div>
 
@@ -87,7 +97,8 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         tooltipPlacement="top"
                         style={{ marginBottom: 20 }}
                     />
-                    <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}&width=${width})`} />
+                    <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
+                    <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}&width=${width}" alt="Preview" />`} />
                 </Form.Item>
             </div>
 
@@ -97,7 +108,8 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     <Radio value="true">Evet</Radio>
                     <Radio value="false">Hayır</Radio>
                 </Radio.Group>
-                <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`} />
+                <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
+                <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />`} />
             </div>
 
             <div className="image-preview">
@@ -117,6 +129,13 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     readOnly
                     value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
                 />
+                <Title level={5}>HTML Kodunuz:</Title>
+                <TextArea
+                    className="html-code"
+                    autoSize
+                    readOnly
+                    value={htmlCode}
+                />
             </div>
 
             <style jsx>{`
@@ -133,12 +152,13 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     margin-bottom: 20px;
                 }
 
-                .markdown {
+                .markdown, .html-code {
                     background: #f5f5f5;
                     border: 1px solid #d9d9d9;
                     border-radius: 4px;
                     padding: 8px;
                     font-family: monospace;
+                    margin-top: 10px;
                 }
 
                 .image-preview {
