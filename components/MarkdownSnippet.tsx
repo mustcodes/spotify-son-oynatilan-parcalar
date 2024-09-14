@@ -14,9 +14,6 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const [width, setWidth] = useState<number>(400); // Varsayılan genişlik
     const [count, setCount] = useState<number>(5); // Varsayılan özel sayı
     const [unique, setUnique] = useState<string>('false'); // Varsayılan benzersiz parça
-    const [customWidthMarkdown, setCustomWidthMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&width=400)`);
-    const [customCountMarkdown, setCustomCountMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&count=5)`);
-    const [customUniqueMarkdown, setCustomUniqueMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username})`);
 
     if (!username) {
         return null;
@@ -24,24 +21,18 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
     const svgSrc = `${Constants.BaseUrl}/api?user=${username}`;
     const markdownCode = `![Alt text](${svgSrc})`;
-    const customWidthCode = `![Alt text](${svgSrc}&width=${width})`;
-    const customCountCode = `![Alt text](${svgSrc}&count=${count})`;
-    const customUniqueCode = unique === 'true' ? `![Alt text](${svgSrc}&unique=true)` : `![Alt text](${svgSrc})`;
+    const customMarkdownCode = `![Alt text](${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''})`;
 
     const handleWidthChange = (value: number) => {
         setWidth(value);
-        setCustomWidthMarkdown(`![Alt text](${svgSrc}&width=${value})`);
     };
 
     const handleCountChange = (value: number) => {
         setCount(value);
-        setCustomCountMarkdown(`![Alt text](${svgSrc}&count=${value})`);
     };
 
     const handleUniqueChange = (e: any) => {
-        const value = e.target.value;
-        setUnique(value);
-        setCustomUniqueMarkdown(value === 'true' ? `![Alt text](${svgSrc}&unique=true)` : `![Alt text](${svgSrc})`);
+        setUnique(e.target.value);
     };
 
     return (
@@ -74,7 +65,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         tooltipPlacement="top"
                         style={{ marginBottom: 20 }}
                     />
-                    <TextArea className="markdown" autoSize readOnly value={customCountCode} />
+                    <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}&count=${count})`} />
                 </Form.Item>
             </div>
 
@@ -96,7 +87,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         tooltipPlacement="top"
                         style={{ marginBottom: 20 }}
                     />
-                    <TextArea className="markdown" autoSize readOnly value={customWidthCode} />
+                    <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}&width=${width})`} />
                 </Form.Item>
             </div>
 
@@ -106,12 +97,16 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     <Radio value="true">Evet</Radio>
                     <Radio value="false">Hayır</Radio>
                 </Radio.Group>
-                <TextArea className="markdown" autoSize readOnly value={customUniqueCode} />
+                <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`} />
             </div>
 
             <div className="image-preview">
                 <Title level={5}>Önizleme:</Title>
-                <img src={`${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}`} alt="Preview" style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }} />
+                <img
+                    src={`${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}`}
+                    alt="Preview"
+                    style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }}
+                />
             </div>
 
             <div className="section">
@@ -120,7 +115,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     className="markdown"
                     autoSize
                     readOnly
-                    value={`Özel genişlik için:\n${customWidthMarkdown}\n\nÖzel sayı için:\n${customCountMarkdown}\n\nBenzersiz parçalar için:\n${customUniqueMarkdown}`}
+                    value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
                 />
             </div>
 
