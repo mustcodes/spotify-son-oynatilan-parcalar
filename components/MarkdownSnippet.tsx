@@ -1,19 +1,3 @@
-                        </div>
-
-                        <div className="section">
-                            <Text>Benzersiz parçalar için:</Text>
-                            <TextArea className="html-code" autoSize readOnly value={`<img src="${svgSrc}${unique === 'true' ? '&unique=true' : ''}" alt="Preview" />`} />
-                        </div>
-                    </div>
-                </TabPane>
-            </Tabs>
-
-            <div className="image-preview">
-                <Title level={5}>Önizleme:</Title>
-                <img
-                    src={`${svgSrc}&width=${width}&count=${count}${unique === 'true' ? '&unique=true' : ''}`}
-                    alt="Preview"
-                    style={{ width: '100%', maxHeight: '400px', borderRadius: '8px' }}
                 />
             </div>
 
@@ -47,6 +31,22 @@
                 .image-preview img {
                     border-radius: 8px;
                     border: 1px solid #d9d9d9;
+                }
+
+                .html-example {
+                    margin-top: 10px;
+                }
+
+                .html-example input[type="range"] {
+                    width: 100%;
+                }
+
+                .example {
+                    margin-bottom: 20px;
+                }
+                
+                .html-code {
+                    white-space: pre-wrap;
                 }
             `}</style>
         </Space>
