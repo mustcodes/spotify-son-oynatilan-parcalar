@@ -55,14 +55,17 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             </Row>
             <style jsx>{`
                 .svg-container {
-                    width: 100%;
+                    width: 100%; /* Full width of the parent container */
+                    max-width: 100%; /* Prevent the SVG from exceeding the container width */
+                    height: auto; /* Maintain aspect ratio */
                     display: flex;
-                    justify-content: center;
-                    overflow: hidden;
+                    justify-content: center; /* Center horizontally */
+                    align-items: center; /* Center vertically */
+                    overflow: hidden; /* Hide any overflow */
                 }
 
                 .svg-preview {
-                    width: 100%;
+                    width: 100%; /* Make SVG take the full width of its container */
                     height: auto; /* Maintain aspect ratio */
                 }
 
