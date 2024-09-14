@@ -12,7 +12,9 @@ interface Props {
 export default function MarkdownSnippet(props: Props): JSX.Element | null {
     const { username } = props;
     const [width, setWidth] = useState<number>(400); // Varsayılan genişlik
+    const [count, setCount] = useState<number>(5); // Varsayılan özel sayı
     const [customWidthMarkdown, setCustomWidthMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&width=400)`);
+    const [customCountMarkdown, setCustomCountMarkdown] = useState<string>(`![Alt text](${Constants.BaseUrl}/api?user=${username}&count=5)`);
 
     if (!username) {
         return null;
@@ -20,13 +22,18 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
     const svgSrc = `${Constants.BaseUrl}/api?user=${username}`;
     const markdownCode = `![Alt text](${svgSrc})`;
-    const customCount = `![Alt text](${svgSrc}&count={count})`;
-    const uniqueTracks = `![Alt text](${svgSrc}&unique={true|1|on|yes})`;
     const customWidthCode = `![Alt text](${svgSrc}&width=${width})`;
+    const customCountCode = `![Alt text](${svgSrc}&count=${count})`;
+    const uniqueTracks = `![Alt text](${svgSrc}&unique={true|1|on|yes})`;
 
     const handleWidthChange = (value: number) => {
         setWidth(value);
         setCustomWidthMarkdown(`![Alt text](${svgSrc}&width=${value})`);
+    };
+
+    const handleCountChange = (value: number) => {
+        setCount(value);
+        setCustomCountMarkdown(`![Alt text](${svgSrc}&count=${value})`);
     };
 
     return (
@@ -43,13 +50,24 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
             <div className="section">
                 <Text>
-                    Özel sayı için (
+                    Özel sayı için:
                     <b>
                         {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
                     </b>
-                    ):
                 </Text>
-                <TextArea className="markdown" autoSize readOnly value={customCount} />
+                <Form.Item label="Sayı" style={{ marginBottom: 0 }}>
+                    <Slider
+                        min={1}
+                        max={10}
+                        step={1}
+                        value={count}
+                        onChange={handleCountChange}
+                        tooltipVisible
+                        tooltipPlacement="top"
+                        style={{ marginBottom: 20 }}
+                    />
+                    <TextArea className="markdown" autoSize readOnly value={customCountCode} />
+                </Form.Item>
             </div>
 
             <div className="section">
