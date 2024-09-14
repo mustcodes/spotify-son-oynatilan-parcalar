@@ -18,7 +18,7 @@ export default function Timestamp(props: Props): JSX.Element {
             zone: 'utc',
             locale: 'tr',
         }).toRelative({
-            style: 'long',
+            style: 'short',
         }) ?? '';
 
     const timestampTitle = isoDate;
