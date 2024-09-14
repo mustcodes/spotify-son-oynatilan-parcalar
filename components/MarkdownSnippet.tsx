@@ -42,7 +42,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
             </Title>
             <Divider />
 
-            <div className="form-section">
+            <Space className="form-section" direction="vertical" size="large">
                 <div className="form-item">
                     <Title level={5}>Markdown kod parçacığı:</Title>
                     <TextArea className="markdown" autoSize readOnly value={markdownCode} />
@@ -100,7 +100,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     </Radio.Group>
                     <TextArea className="markdown" autoSize readOnly value={`![Alt text](${svgSrc}${unique === 'true' ? '&unique=true' : ''})`} />
                 </div>
-            </div>
+            </Space>
 
             <div className="image-preview">
                 <Title level={5}>Önizleme:</Title>
@@ -121,7 +121,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                 />
             </div>
 
-            <div className="actions">
+            <div className="button-container">
                 <Button type="primary" onClick={() => alert('Yeniden Yetkilendir')}>Yeniden Yetkilendir</Button>
                 <Button type="link" danger onClick={() => alert('Yerel kimlik bilgilerini temizle')}>Yerel kimlik bilgilerini temizle</Button>
             </div>
@@ -139,11 +139,11 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
 
                 .form-section {
                     margin-bottom: 20px;
+                    text-align: left;
                 }
 
                 .form-item {
                     margin-bottom: 20px;
-                    text-align: left;
                 }
 
                 .markdown {
@@ -162,14 +162,14 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     margin-bottom: 20px;
                 }
 
-                .actions {
+                .button-container {
                     display: flex;
                     justify-content: center;
                     gap: 10px;
                     margin-top: 20px;
                 }
 
-                .actions .ant-btn {
+                .button-container .ant-btn {
                     margin: 0 10px;
                 }
             `}</style>
