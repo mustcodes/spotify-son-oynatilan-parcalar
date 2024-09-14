@@ -29,13 +29,16 @@ export default function Home(): JSX.Element {
     return (
         <div className="container">
             <Head>
-                <title>Spotify Son Çalınan Parçalar README Oluşturucu</title>
+                <title>Spotify Son Oynatılan Parçalar - Mustafa Arda Düşova</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <div className="header">
                 <Breadcrumb separator=">" style={{ marginBottom: 25 }}>
-                    <Breadcrumb.Item href="https://mdusova.com/">by mdusova</Breadcrumb.Item>
+                    <Breadcrumb.Item href="https://mdusova.com/">Yapımcı: mdusova</Breadcrumb.Item>
+                </Breadcrumb>
+                 <Breadcrumb separator=">" style={{ marginBottom: 25 }}>
+                    <Breadcrumb.Item href="https://github.com/mustcodes/spotify-son-oynatilan-parcalar">Kaynak kodunu görüntüle</Breadcrumb.Item>
                 </Breadcrumb>
                 <Title level={2} style={{ fontWeight: 700, color: '#1DB954' }}>
                     Spotify Son Çalınan Parçalar
