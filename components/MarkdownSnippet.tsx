@@ -70,6 +70,45 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         <Title level={5}>Markdown kod parçacığı:</Title>
                         <TextArea className="markdown" autoSize readOnly value={markdownCode} />
                         <div className="section">
+                            <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
+                            <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
+                            <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
+                        </div>
+                        <div className="section">
+                            <Title level={5}>Markdown Kodunuz:</Title>
+                            <TextArea
+                                className="markdown"
+                                autoSize
+                                readOnly
+                                value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
+                            />
+                        </div>
+                    </div>
+                </TabPane>
+                <TabPane tab="HTML" key="html">
+                    <div className="section">
+                        <Title level={5}>HTML kod parçacığı:</Title>
+                        <TextArea className="html-code" autoSize readOnly value={htmlCode} />
+                        <div className="section">
+                            <TextArea className="html-code" autoSize readOnly value={htmlCountCode} />
+                            <TextArea className="html-code" autoSize readOnly value={htmlWidthCode} />
+                            <TextArea className="html-code" autoSize readOnly value={htmlUniqueCode} />
+                        </div>
+                        <div className="section">
+                            <Title level={5}>HTML Kodunuz:</Title>
+                            <TextArea
+                                className="html-code"
+                                autoSize
+                                readOnly
+                                value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${htmlCode}`}
+                            />
+                        </div>
+                    </div>
+                </TabPane>
+                <TabPane tab="Ayarlar" key="settings">
+                    <div className="section">
+                        <Title level={5}>Ayarlar:</Title>
+                        <div className="section">
                             <Text>
                                 Özel sayı için:
                                 <b>
@@ -88,9 +127,7 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                     style={{ marginBottom: 20 }}
                                 />
                             </Form.Item>
-                            <TextArea className="markdown" autoSize readOnly value={markdownCountCode} />
                         </div>
-
                         <div className="section">
                             <Text>
                                 Özel genişlik için:
@@ -110,81 +147,13 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                                     style={{ marginBottom: 20 }}
                                 />
                             </Form.Item>
-                            <TextArea className="markdown" autoSize readOnly value={markdownWidthCode} />
                         </div>
-
                         <div className="section">
                             <Text>Benzersiz parçalar için:</Text>
                             <Radio.Group onChange={handleUniqueChange} value={unique} style={{ marginBottom: 20 }}>
                                 <Radio value="true">Evet</Radio>
                                 <Radio value="false">Hayır</Radio>
                             </Radio.Group>
-                            <TextArea className="markdown" autoSize readOnly value={markdownUniqueCode} />
-                        </div>
-
-                        <div className="section">
-                            <Title level={5}>Markdown Kodunuz:</Title>
-                            <TextArea
-                                className="markdown"
-                                autoSize
-                                readOnly
-                                value={`Özel genişlik, özel sayı ve benzersiz parça ayarları:\n\n${customMarkdownCode}`}
-                            />
-                        </div>
-                    </div>
-                </TabPane>
-                <TabPane tab="HTML" key="html">
-                    <div className="section">
-                        <Title level={5}>HTML kod parçacığı:</Title>
-                        <TextArea className="html-code" autoSize readOnly value={htmlCode} />
-                        <div className="section">
-                            <Text>
-                                Özel sayı için:
-                                <b>
-                                    {Constants.minCount} &#8804; &#123;Sayı&#125; &#8804; {Constants.maxCount}
-                                </b>
-                            </Text>
-                            <div className="example">
-                                <div className="html-example">
-                                    <h4>Slider Örneği:</h4>
-                                    <input type="range" min="1" max="10" value={count} readOnly />
-                                </div>
-                                <TextArea className="html-code" autoSize readOnly value={htmlCountCode} />
-                            </div>
-                        </div>
-
-                        <div className="section">
-                            <Text>
-                                Özel genişlik için:
-                                <b>
-                                    {Constants.minWidth} &#8804; &#123;Genişlik&#125; &#8804; {Constants.maxWidth}
-                                </b>
-                            </Text>
-                            <div className="example">
-                                <div className="html-example">
-                                    <h4>Slider Örneği:</h4>
-                                    <input type="range" min={Constants.minWidth} max={Constants.maxWidth} value={width} readOnly />
-                                </div>
-                                <TextArea className="html-code" autoSize readOnly value={htmlWidthCode} />
-                            </div>
-                        </div>
-
-                        <div className="section">
-                            <Text>Benzersiz parçalar için:</Text>
-                            <div className="example">
-                                <div className="html-example">
-                                    <h4>Radio Button Örneği:</h4>
-                                    <label>
-                                        <input type="radio" name="unique" value="true" checked={unique === 'true'} disabled />
-                                        Evet
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="unique" value="false" checked={unique === 'false'} disabled />
-                                        Hayır
-                                    </label>
-                                </div>
-                                <TextArea className="html-code" autoSize readOnly value={htmlUniqueCode} />
-                            </div>
                         </div>
                     </div>
                 </TabPane>
