@@ -47,15 +47,23 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                         <TextArea className="markdown" autoSize readOnly value={customWidth} />
                         <Text>Benzersiz parçalar için:</Text>
                         <TextArea className="markdown" autoSize readOnly value={uniqueTracks} />
-                        <img className="svg-preview" src={svgSrc} alt="SVG Preview" />
+                        <div className="svg-container">
+                            <img className="svg-preview" src={svgSrc} alt="SVG Preview" />
+                        </div>
                     </Space>
                 </Col>
             </Row>
             <style jsx>{`
+                .svg-container {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    overflow: hidden;
+                }
+
                 .svg-preview {
                     width: 100%;
                     height: auto; /* Maintain aspect ratio */
-                    max-width: 100%; /* Ensure the image doesn’t exceed container width */
                 }
 
                 .markdown {
