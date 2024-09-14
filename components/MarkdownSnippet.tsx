@@ -205,6 +205,10 @@ export default function MarkdownSnippet(props: Props): JSX.Element | null {
                     border-radius: 8px;
                     border: 1px solid #d9d9d9;
                 }
+
+                .html-code {
+                    white-space: pre-wrap;
+                }
             `}</style>
         </Space>
     );
