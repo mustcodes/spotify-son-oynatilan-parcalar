@@ -1,7 +1,7 @@
 import { Input, Space, Typography, Row, Col } from 'antd';
 import React from 'react';
 import * as Constants from '../utils/Constants';
-import '../styles/global.css'; // External CSS for additional styles
+import '../styles/globals.css'; // External CSS for additional styles
 
 const { Text, Title } = Typography;
 const { TextArea } = Input;
